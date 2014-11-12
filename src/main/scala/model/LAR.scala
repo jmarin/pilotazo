@@ -9,7 +9,12 @@ case class LAR(
   actionType: Int,
   actionDate: Int,
   geography: Geography,
-  applicant: Applicant)
+  applicant: Applicant,
+  purchaserType: Int,
+  denial: Denial,
+  rateSpread: String,
+  hoepaStatus: Int,
+  lienStatus: Int)
 
 case class Loan(
   id: String,
@@ -42,4 +47,9 @@ case class Applicant(
   sex: Int,
   coSex: Int,
   income: String)
+
+case class Denial(
+  reason1: String,
+  reason2: String,
+  reason3: String)
 

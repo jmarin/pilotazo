@@ -38,6 +38,13 @@ object LARParser extends JavaTokenParsers {
     val appSex = s.substring(93, 94)
     val coAppSex = s.substring(94, 95)
     val appIncome = s.substring(95, 99)
+    val purchaserType = s.substring(99, 100)
+    val denial1 = s.substring(100, 101)
+    val denial2 = s.substring(101, 102)
+    val denial3 = s.substring(102, 103)
+    val rateSpread = s.substring(103, 108)
+    val hoepaStatus = s.substring(108, 109)
+    val lienStatus = s.substring(109, 110)
 
     id ++ " " ++
       respId ++ " " ++
@@ -70,7 +77,14 @@ object LARParser extends JavaTokenParsers {
       coAppRace5 + " " ++
       appSex + " " ++
       coAppSex + " " ++
-      appIncome
+      appIncome + " " ++
+      purchaserType + " " ++
+      denial1 + " " ++
+      denial2 + " " ++
+      denial3 + " " ++
+      rateSpread + " " ++
+      hoepaStatus + " " ++
+      lienStatus
   }
 
   def dot: Parser[Any] = "."
@@ -98,9 +112,19 @@ object LARParser extends JavaTokenParsers {
         Applicant(eth, coeth, r1, r2, r3, r4, r5, cr1, cr2, cr3, cr4, cr5, sex, csex, income)
     }
 
-  def expr = number ~ str ~ number ~ loan ~ number ~ number ~ number ~ geography ~ applicant ^^ {
-    case (id ~ respId ~ code ~ loan ~ preapproval ~ actionType ~ actionDate ~ geography ~ applicant) =>
-      LAR(id, respId, code, loan, preapproval, actionType, actionDate, geography, applicant)
+  def denial: Parser[Denial] =
+    str ~ str ~ str ^^ {
+      case (r1 ~ r2 ~ r3) =>
+        Denial(r1, r2, r3)
+    }
+
+  def rateSpread: Parser[String] = str ~ dot ~ str ^^ {
+    case (a ~ d ~ b) => a ++ d.toString ++ b
+  }
+
+  def expr = number ~ str ~ number ~ loan ~ number ~ number ~ number ~ geography ~ applicant ~ number ~ denial ~ rateSpread ~ number ~ number ^^ {
+    case (id ~ respId ~ code ~ loan ~ preapproval ~ actionType ~ actionDate ~ geography ~ applicant ~ purchaser ~ denial ~ rate ~ hoepa ~ lien) =>
+      LAR(id, respId, code, loan, preapproval, actionType, actionDate, geography, applicant, purchaser, denial, rate, hoepa, lien)
   }
 
   def apply(input: String): Option[LAR] = parseAll(expr, input) match {
