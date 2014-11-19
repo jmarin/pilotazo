@@ -1,6 +1,7 @@
 package parser
 
 trait LARSplitter {
+
   def split(s: String): String = {
     val id = s.toList(0).toString
     val respId = s.substring(1, 11)
