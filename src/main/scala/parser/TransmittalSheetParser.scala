@@ -20,9 +20,26 @@ object TransmittalSheetParser extends BaseParser with TSSplitter {
       pre.toString + h.toString + post.toString
   }
 
-  val expr = id ~ respId ~ code ~ timestamp ~ activityYear ~ taxId ^^ {
-    case (id ~ respId ~ code ~ timestamp ~ activityYear ~ taxId) =>
-      TransmittalSheet(id, respId, code, timestamp, activityYear, taxId)
+  val totalLines = int
+
+  val respondent = str ~ str ~ str ~ str ~ str ^^ {
+    case (name ~ address ~ city ~ state ~ zip) =>
+      Respondent(name, address, city, state, zip)
+  }
+
+  val parent = str ~ str ~ str ~ str ~ str ^^ {
+    case (name ~ address ~ city ~ state ~ zip) =>
+      Parent(name, address, city, state, zip)
+  }
+
+  val contact = str ~ str ~ str ~ str ^^ {
+    case (name ~ phone ~ fax ~ email) =>
+      Contact(name, phone, fax, email)
+  }
+
+  val expr = id ~ respId ~ code ~ timestamp ~ activityYear ~ taxId ~ totalLines ~ respondent ~ parent ~ contact ^^ {
+    case (id ~ respId ~ code ~ timestamp ~ activityYear ~ taxId ~ totalLines ~ respondent ~ parent ~ contact) =>
+      TransmittalSheet(id, respId, code, timestamp, activityYear, taxId, totalLines, respondent, parent, contact)
   }
 
   def apply(input: String): Option[TransmittalSheet] = parseAll(expr, input) match {
