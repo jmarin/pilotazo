@@ -23,7 +23,7 @@ case class Loan(
   propertyType: Int,
   purpose: Int,
   occupancy: Int,
-  amount: Integer)
+  amount: Int)
 
 case class Geography(
   msa: String,
