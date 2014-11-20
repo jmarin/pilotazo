@@ -14,4 +14,6 @@ trait BaseParser extends JavaTokenParsers {
 
   val hiphen: Parser[Any] = "-"
 
+  val phoneNumber: Parser[String] = """^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$""".r ^^ { _.toString }
+
 }

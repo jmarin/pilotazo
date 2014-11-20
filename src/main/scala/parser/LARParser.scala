@@ -11,6 +11,8 @@ object LARParser extends JavaTokenParsers with LARSplitter {
 
   val str: Parser[String] = """[a-zA-Z0-9_]+""".r ^^ { _.toString }
 
+  val agencyCode: Parser[Int] = number
+
   val loan: Parser[Loan] = str ~ str ~ number ~ number ~ number ~ number ~ number ^^ {
     case (id ~ date ~ loanType ~ propertyType ~ purpose ~ occupancy ~ amount) =>
       Loan(id, date, loanType, propertyType, purpose, occupancy, amount)
@@ -40,7 +42,7 @@ object LARParser extends JavaTokenParsers with LARSplitter {
     case (a ~ d ~ b) => a ++ d.toString ++ b
   }
 
-  val expr = number ~ str ~ number ~ loan ~ number ~ number ~ number ~ geography ~ applicant ~ number ~ denial ~ rateSpread ~ number ~ number ^^ {
+  val expr = number ~ str ~ agencyCode ~ loan ~ number ~ number ~ number ~ geography ~ applicant ~ number ~ denial ~ rateSpread ~ number ~ number ^^ {
     case (id ~ respId ~ code ~ loan ~ preapproval ~ actionType ~ actionDate ~ geography ~ applicant ~ purchaser ~ denial ~ rate ~ hoepa ~ lien) =>
       LAR(id, respId, code, loan, preapproval, actionType, actionDate, geography, applicant, purchaser, denial, rate, hoepa, lien)
   }

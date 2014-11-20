@@ -20,19 +20,21 @@ object TransmittalSheetParser extends BaseParser with TSSplitter {
       pre.toString + h.toString + post.toString
   }
 
+  val zipCode = taxId | str
+
   val totalLines = int
 
-  val respondent = str ~ str ~ str ~ str ~ str ^^ {
+  val respondent = str ~ str ~ str ~ str ~ zipCode ^^ {
     case (name ~ address ~ city ~ state ~ zip) =>
       Respondent(name, address, city, state, zip)
   }
 
-  val parent = str ~ str ~ str ~ str ~ str ^^ {
+  val parent = str ~ str ~ str ~ str ~ zipCode ^^ {
     case (name ~ address ~ city ~ state ~ zip) =>
       Parent(name, address, city, state, zip)
   }
 
-  val contact = str ~ str ~ str ~ str ^^ {
+  val contact = str ~ phoneNumber ~ phoneNumber ~ str ^^ {
     case (name ~ phone ~ fax ~ email) =>
       Contact(name, phone, fax, email)
   }
