@@ -33,20 +33,20 @@ trait TSSplitter {
       activityYear ++ " " ++
       taxId ++ " " ++
       totalLines ++ " " ++
-      respName ++ " " ++
-      respAddress ++ " " ++
-      respCity ++ " " ++
-      respState ++ " " ++
-      respZip ++ " " ++
-      parentName ++ " " ++
-      parentAddress ++ " " ++
-      parentCity ++ " " ++
-      parentState ++ " " ++
-      parentZip ++ " " ++
-      contactPerson ++ " " ++
-      contactPhone ++ " " ++
-      contactFax ++ " " ++
-      contactEmail
+      respName //++ " " ++
+    //respAddress ++ " " ++
+    //respCity ++ " " ++
+    //respState ++ " " ++
+    //respZip ++ " " ++
+    //parentName ++ " " ++
+    //parentAddress ++ " " ++
+    //parentCity ++ " " ++
+    //parentState ++ " " ++
+    //parentZip ++ " " ++
+    //contactPerson ++ " " ++
+    //contactPhone ++ " " ++
+    //contactFax ++ " " ++
+    //contactEmail
 
   }
 

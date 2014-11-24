@@ -6,6 +6,8 @@ trait BaseParser extends JavaTokenParsers {
 
   val str: Parser[String] = """[a-zA-Z0-9_]+""".r ^^ { _.toString }
 
+  val repStr: Parser[List[String]] = rep(str)
+
   val int: Parser[Int] = wholeNumber ^^ { _.toInt }
 
   val long: Parser[Long] = wholeNumber ^^ { _.toLong }

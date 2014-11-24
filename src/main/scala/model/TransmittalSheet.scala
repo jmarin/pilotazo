@@ -8,18 +8,17 @@ case class TransmittalSheet(
     activityYear: Int,
     taxId: String,
     totalLines: Int,
-    respondent: Respondent,
-    parent: Parent,
-    contact: Contact) {
+    respondent: Respondent) {
   require(id == 1, "Firs record for Transmittal Sheet has to be 1")
 }
 
 case class Respondent(
-  respName: String,
-  respAddress: String,
-  respCity: String,
-  respState: String,
-  respZip: String)
+  respName: String)
+// ,
+// respAddress: String,
+// respCity: String,
+// respState: String,
+// respZip: String)
 
 case class Parent(
   parentName: String,
