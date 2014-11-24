@@ -34,10 +34,10 @@ trait TSSplitter {
       taxId ++ " " ++
       totalLines ++ " " ++
       respName //++ " " ++
-    //respAddress ++ " " ++
+    //respAddress //++ " " ++
     //respCity ++ " " ++
     //respState ++ " " ++
-    //respZip ++ " " ++
+    //respZip //++ " " ++
     //parentName ++ " " ++
     //parentAddress ++ " " ++
     //parentCity ++ " " ++

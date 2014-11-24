@@ -26,7 +26,8 @@ object TransmittalSheetParser extends BaseParser with TSSplitter {
 
   val respondent = repStr ^^ {
     case (name) =>
-      Respondent(name.mkString(" "))
+      Respondent(
+        name.mkString(" "))
   }
 
   val parent = str ~ str ~ str ~ str ~ zipCode ^^ {

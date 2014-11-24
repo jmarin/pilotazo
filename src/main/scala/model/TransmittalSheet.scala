@@ -13,22 +13,21 @@ case class TransmittalSheet(
 }
 
 case class Respondent(
-  respName: String)
-// ,
-// respAddress: String,
-// respCity: String,
-// respState: String,
-// respZip: String)
+  name: String)
+//address: String),
+// city: String,
+// state: String,
+// zipCode: String)
 
 case class Parent(
-  parentName: String,
-  parentAddress: String,
-  parentCity: String,
-  parentState: String,
-  parentZip: String)
+  name: String,
+  address: String,
+  city: String,
+  state: String,
+  zipCode: String)
 
 case class Contact(
-  contactPerson: String,
-  contactPhone: String,
-  contactFax: String,
-  contactEmail: String)
+  name: String,
+  phone: String,
+  fax: String,
+  email: String)
