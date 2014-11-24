@@ -6,15 +6,15 @@ case class LAR(
   code: Int,
   loan: Loan,
   preapprovals: Int,
-  actionType: Int,
-  actionDate: Int,
-  geography: Geography,
-  applicant: Applicant,
-  purchaserType: Int,
-  denial: Denial,
-  rateSpread: String,
-  hoepaStatus: Int,
-  lienStatus: Int)
+  actionType: Int)
+// actionDate: Int,
+// geography: Geography,
+// applicant: Applicant,
+// purchaserType: Int,
+// denial: Denial,
+// rateSpread: String,
+// hoepaStatus: Int,
+// lienStatus: Int)
 
 case class Loan(
   id: String,

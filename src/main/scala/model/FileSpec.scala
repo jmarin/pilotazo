@@ -1,3 +1,3 @@
 package model
 
-case class FileSpec(ts: Option[TransmittalSheet], lars: Seq[Option[LAR]])
+case class FileSpec(ts: TransmittalSheet, lars: Seq[LAR])

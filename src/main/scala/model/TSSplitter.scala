@@ -3,7 +3,6 @@ package model
 trait TSSplitter {
 
   def split(s: String): String = {
-    println(s.length)
     val id = s.toList(0).toString
     val respId = s.substring(1, 11)
     val code = s.substring(11, 12)

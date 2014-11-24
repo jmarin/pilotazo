@@ -1,23 +1,23 @@
 package model
 
 case class TransmittalSheet(
-    id: Int,
-    respId: String,
-    code: Int,
-    timestamp: Long,
-    activityYear: Int,
-    taxId: String,
-    totalLines: Int,
-    respondent: Respondent) {
-  require(id == 1, "Firs record for Transmittal Sheet has to be 1")
-}
+  id: Int,
+  respId: String,
+  code: Int,
+  timestamp: Long,
+  activityYear: Int,
+  taxId: String,
+  totalLines: Int,
+  respondent: Respondent,
+  parent: Parent,
+  contact: Contact)
 
 case class Respondent(
-  name: String)
-//address: String),
-// city: String,
-// state: String,
-// zipCode: String)
+  name: String,
+  address: String,
+  city: String,
+  state: String,
+  zipCode: String)
 
 case class Parent(
   name: String,

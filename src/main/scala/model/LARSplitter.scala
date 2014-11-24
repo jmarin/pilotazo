@@ -3,10 +3,10 @@ package parser
 trait LARSplitter {
 
   def split(s: String): String = {
-    val id = s.toList(0).toString
+    val id = s.substring(0, 1)
     val respId = s.substring(1, 11)
     val code = s.substring(11, 12)
-    val loanId = s.substring(12, 36)
+    val loanId = s.substring(12, 37)
     val loanDate = s.substring(37, 45)
     val loanType = s.substring(45, 46)
     val propertyType = s.substring(46, 47)
