@@ -24,3 +24,5 @@ libraryDependencies ++= {
 }
 
 scalariformSettings
+
+Revolver.settings
